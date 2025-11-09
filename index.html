@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crazy Studios – Roblox Game Studio</title>
-  <meta name="description" content="Crazy Studios creates epic Roblox games for players around the world. Join our Discord and follow us on Twitter for updates!">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif; }
-    body { background:#000; color:#fff; }
-    
-    header { position: fixed; top:0; left:0; width:100%; background: rgba(0,0,0,0.7); display:flex; justify-content:space-between; align-items:center; padding:20px 50px; z-index:1000; }
-    header img { height:60px; }
-    nav a { color:#fff; text-decoration:none; margin-left:30px; font-weight:700; }
-    nav a:hover { color:#f39c12; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crazy Studios – Roblox Game Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif; }
+  body { background:#000; color:#fff; scroll-behavior: smooth; }
 
-    .hero { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background-image:url('Gamesbackground.png'); background-size:cover; background-position:center; position:relative; }
-    .hero::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); }
-    .hero-content { position:relative; z-index:1; }
-    .hero h1 { font-size:64px; margin-bottom:20px; }
-    .hero p { font-size:24px; margin-bottom:40px; }
-    .hero button { padding:15px 40px; font-size:18px; font-weight:700; background:#f39c12; border:none; cursor:pointer; border-radius:10px; }
-    .hero button:hover { background:#e67e22; }
+  header { position: fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:20px 50px; background: rgba(0,0,0,0.7); z-index: 1000; transition: background 0.3s; }
+  header img { height:60px; transition: transform 0.3s; }
+  header img:hover { transform: scale(1.1); }
+  nav a { color:#fff; text-decoration:none; margin-left:30px; font-weight:700; transition: color 0.3s; }
+  nav a:hover { color:#f39c12; }
 
-    section { padding:80px 50px; text-align:center; }
-    section h2 { font-size:36px; margin-bottom:40px; }
+  .hero { height:100vh; display:flex; justify-content:center; align-items:center; text-align:center; background-image:url('Gamesbackground.png'); background-size:cover; background-position:center; position:relative; }
+  .hero::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); }
+  .hero-content { position:relative; z-index:1; animation: fadeIn 2s ease forwards; }
+  .hero h1 { font-size:64px; margin-bottom:20px; animation: slideDown 1s ease forwards; }
+  .hero p { font-size:24px; margin-bottom:40px; animation: slideUp 1s ease forwards; }
+  .hero button { padding:15px 40px; font-size:18px; font-weight:700; background:#f39c12; border:none; border-radius:10px; cursor:pointer; transition: all 0.3s; animation: fadeIn 2s ease forwards; }
+  .hero button:hover { background:#e67e22; transform: scale(1.05); }
 
-    .games-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
-    .game-card { background:#111; width:300px; border-radius:15px; overflow:hidden; transition:transform 0.3s; }
-    .game-card img { width:100%; display:block; }
-    .game-card h3 { padding:15px; }
-    .game-card:hover { transform: scale(1.05); }
+  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+  @keyframes slideDown { from {opacity:0; transform: translateY(-50px);} to {opacity:1; transform: translateY(0);} }
+  @keyframes slideUp { from {opacity:0; transform: translateY(50px);} to {opacity:1; transform: translateY(0);} }
 
-    #contact a { color:#f39c12; text-decoration:none; font-weight:700; margin:0 10px; }
-    #contact a:hover { text-decoration:underline; }
+  section { padding:80px 50px; text-align:center; }
+  section h2 { font-size:36px; margin-bottom:40px; }
 
-    footer { background:#111; padding:40px 50px; text-align:center; }
+  .games-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
+  .game-card { background:#111; width:300px; border-radius:15px; overflow:hidden; box-shadow:0 0 20px rgba(243,156,18,0.5); transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+  .game-card img { width:100%; display:block; }
+  .game-card h3 { padding:15px; }
+  .game-card:hover { transform: translateY(-10px); box-shadow:0 0 40px rgba(243,156,18,0.7); }
 
-    @media(max-width:768px){
-      .hero h1 { font-size:48px; }
-      .hero p { font-size:18px; }
-      nav a { margin-left:15px; font-size:14px; }
-      .games-container { flex-direction:column; align-items:center; }
-    }
-  </style>
+  #contact a { color:#f39c12; text-decoration:none; font-weight:700; margin:0 10px; transition: color 0.3s; }
+  #contact a:hover { color:#e67e22; }
+
+  footer { background:#111; padding:40px 50px; text-align:center; }
+
+  @media(max-width:768px){
+    .hero h1 { font-size:48px; }
+    .hero p { font-size:18px; }
+    nav a { margin-left:15px; font-size:14px; }
+    .games-container { flex-direction:column; align-items:center; }
+  }
+</style>
 </head>
 <body>
 
@@ -59,7 +63,7 @@
 
 <section class="hero" id="home">
   <div class="hero-content">
-    <h1>Welcome to Crazy Studios</h1>
+    <h1>Crazy Studios</h1>
     <p>Epic Roblox games coming soon!</p>
     <button onclick="document.getElementById('games').scrollIntoView({behavior:'smooth'});">See Our Games</button>
   </div>
@@ -102,3 +106,4 @@
 
 </body>
 </html>
+
