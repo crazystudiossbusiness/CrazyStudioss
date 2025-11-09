@@ -1,0 +1,62 @@
+// server.js
+const express = require('express');
+const fetch = require('node-fetch'); // npm install node-fetch@2
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// --- CONFIG ---
+const DISCORD_GUILD_ID = '1384190386141921420';
+const ROBLOX_GROUPS = [
+  { name: 'HowtoCCU', id: '500138575' },
+  { name: 'Brainrot', id: '207673591' },
+  { name: 'Epic Sense', id: '33974446' }
+];
+const ROBLOX_GAMES = [
+  { name: 'Project RNG', id: '16662374622' },
+  { name: 'My Singing Fish', id: '117050355640712' } // confirm this ID
+];
+
+// --- CORS ---
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+// --- Routes ---
+app.get('/stats', async (req, res) => {
+  try {
+    // Discord members
+    const discordData = await fetch(`https://discord.com/api/v10/guilds/${DISCORD_GUILD_ID}?with_counts=true`)
+      .then(r => r.json());
+    const discordCount = discordData.approximate_member_count || discordData.approximate_presence_count || 0;
+
+    // Roblox groups
+    const groups = {};
+    for (const g of ROBLOX_GROUPS) {
+      try {
+        const r = await fetch(`https://groups.roblox.com/v1/groups/${g.id}`);
+        const data = await r.json();
+        groups[g.name] = data.memberCount || 0;
+      } catch(e){ groups[g.name] = 0; }
+    }
+
+    // Roblox games
+    const games = {};
+    for (const g of ROBLOX_GAMES) {
+      try {
+        const r = await fetch(`https://games.roblox.com/v1/games?universeIds=${g.id}`);
+        const data = await r.json();
+        games[g.name] = (data.data && data.data[0] && data.data[0].playing) || 0;
+      } catch(e){ games[g.name] = 0; }
+    }
+
+    res.json({ discord: discordCount, groups, games });
+  } catch (err) {
+    console.error(err);
+    res.json({ discord: 0, groups: {}, games: {} });
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
