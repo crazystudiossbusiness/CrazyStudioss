@@ -19,14 +19,14 @@
 
   /* Hero Section */
   .hero { height:100vh; display:flex; justify-content:center; align-items:center; text-align:center; position:relative; overflow:hidden; }
-  .hero-content { position:relative; z-index:2; animation: fadeIn 2s ease forwards; }
+  .hero-content { position:relative; z-index:3; animation: fadeIn 2s ease forwards; }
   .hero h1 { font-size:64px; margin-bottom:20px; animation: slideDown 1s ease forwards; }
   .hero p { font-size:24px; margin-bottom:40px; animation: slideUp 1s ease forwards; }
   .hero button { padding:15px 40px; font-size:18px; font-weight:700; background:#1abc9c; color:#0a0f0a; border:none; border-radius:10px; cursor:pointer; transition: all 0.3s; animation: fadeIn 2s ease forwards; }
   .hero button:hover { background:#16a085; transform: scale(1.05); box-shadow: 0 0 20px #1abc9c; }
 
-  /* Particles canvas */
-  #particles { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; }
+  /* Canvases */
+  #particles, #floating-icons { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; pointer-events:none; }
 
   @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
   @keyframes slideDown { from {opacity:0; transform: translateY(-50px);} to {opacity:1; transform: translateY(0);} }
@@ -74,6 +74,7 @@
 
 <section class="hero" id="home">
   <canvas id="particles"></canvas>
+  <canvas id="floating-icons"></canvas>
   <div class="hero-content">
     <h1>Crazy Studios</h1>
     <p>Epic Roblox games coming soon!</p>
@@ -117,11 +118,11 @@
 </footer>
 
 <script>
+// ===== Particle network effect =====
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 let particlesArray;
 
 class Particle {
@@ -181,17 +182,73 @@ function animate(){
   connect();
   requestAnimationFrame(animate);
 }
-
 window.addEventListener('resize',()=>{
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   init();
 });
-
 init();
 animate();
+
+// ===== Floating icons =====
+const iconCanvas = document.getElementById('floating-icons');
+const iconCtx = iconCanvas.getContext('2d');
+iconCanvas.width = window.innerWidth;
+iconCanvas.height = window.innerHeight;
+
+class Icon {
+  constructor(image){
+    this.image = image;
+    this.x = Math.random()*iconCanvas.width;
+    this.y = Math.random()*iconCanvas.height;
+    this.size = Math.random()*40 + 20;
+    this.speedX = Math.random()*0.5 - 0.25;
+    this.speedY = Math.random()*0.5 - 0.25;
+  }
+  update(){
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if(this.x > iconCanvas.width) this.x = 0;
+    if(this.x < 0) this.x = iconCanvas.width;
+    if(this.y > iconCanvas.height) this.y = 0;
+    if(this.y < 0) this.y = iconCanvas.height;
+  }
+  draw(){
+    iconCtx.drawImage(this.image, this.x, this.y, this.size, this.size);
+  }
+}
+
+const iconImages = ['icon1.png','icon2.png','icon3.png']; // Add your icon images
+let icons = [];
+
+function loadIcons(){
+  icons = [];
+  iconImages.forEach(src=>{
+    const img = new Image();
+    img.src = src;
+    img.onload = ()=>{
+      for(let i=0;i<5;i++){
+        icons.push(new Icon(img));
+      }
+    }
+  });
+}
+function animateIcons(){
+  iconCtx.clearRect(0,0,iconCanvas.width,iconCanvas.height);
+  icons.forEach(icon=>{
+    icon.update();
+    icon.draw();
+  });
+  requestAnimationFrame(animateIcons);
+}
+
+loadIcons();
+animateIcons();
+window.addEventListener('resize',()=>{
+  iconCanvas.width = window.innerWidth;
+  iconCanvas.height = window.innerHeight;
+});
 </script>
 
 </body>
 </html>
-
