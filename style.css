@@ -1,1 +1,134 @@
+/* ------------------------------------------------
+   Crazy Studios — DoBig-style single page (purple + blue)
+   ------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+:root{
+  --bg:#03040a;
+  --panel:#0c0f16;
+  --purple:#6e34ff;
+  --blue:#1e90ff;
+  --muted:#9aa6b2;
+  --glass: rgba(255,255,255,0.04);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background: linear-gradient(180deg, var(--bg), #000 80%);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* HEADER */
+.site-header{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:1000;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.2));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.header-inner{
+  max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:16px 24px;
+}
+.logo{height:56px; display:block}
+
+/* NAV */
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:600;
+  transition: color .18s, transform .18s;
+}
+.nav a:hover{ color: var(--blue); transform: translateY(-2px) }
+
+/* HERO */
+.hero{
+  position:relative;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background-image: url('assets/Gamesbackground.png');
+  background-size: cover;
+  background-position:center;
+}
+#hero-canvas{ position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0.9 }
+.hero-inner{ position:relative; z-index:3; max-width:980px; padding:40px; text-align:center; background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.45)); border-radius:16px; box-shadow: 0 10px 40px rgba(0,0,0,0.6) }
+.hero-title{ font-weight:800; font-size: clamp(32px, 6vw, 64px); margin:0; color:var(--purple) }
+.hero-sub{ margin-top:14px; color:var(--muted); font-size:18px }
+
+/* BUTTONS */
+.btn{
+  display:inline-block; padding:12px 20px; border-radius:10px; text-decoration:none; font-weight:700; margin:12px;
+  transition: transform .18s, box-shadow .18s;
+}
+.btn.primary{
+  background: linear-gradient(90deg, var(--purple), var(--blue));
+  color:#041025;
+  box-shadow: 0 8px 30px rgba(110,52,255,0.12);
+}
+.btn.ghost{
+  background: transparent;
+  border:1px solid rgba(255,255,255,0.06);
+  color:var(--muted);
+}
+.btn.primary:hover{ transform: translateY(-6px); box-shadow: 0 18px 40px rgba(30,144,255,0.14) }
+
+/* PANELS */
+.panel{ padding:80px 18px; }
+.container{ max-width:1200px; margin:0 auto; }
+
+/* CARDS */
+.cards{ display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-top:24px }
+.card{
+  width:300px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:14px;
+  padding:18px;
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 8px 30px rgba(3,6,23,0.6);
+  transition: transform .22s, box-shadow .22s;
+}
+.card img{ width:100%; border-radius:10px; display:block; margin-bottom:12px; object-fit:cover; height:160px }
+.card h3{ margin:6px 0; color:#eaf2ff }
+.card p.card-desc{ color:var(--muted); font-size:14px; margin-bottom:12px }
+.card .card-link{ display:inline-block; background:var(--blue); color:#031327; padding:8px 12px; border-radius:8px; font-weight:700; text-decoration:none }
+.card .card-stat{ margin-top:12px; color:var(--muted); font-weight:700 }
+
+/* PARTNERS */
+.partners{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-top:18px }
+.partner{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:16px 24px; border-radius:12px; color:var(--muted); text-decoration:none; border:1px solid rgba(255,255,255,0.03) }
+.partner:hover{ transform: translateY(-6px); color:var(--blue) }
+
+/* STATS GRID */
+.stats-grid{ display:grid; gap:18px; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); margin-top:28px; align-items:stretch }
+.stat{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:20px; border-radius:12px; border:1px solid rgba(255,255,255,0.03); text-align:center }
+.stat-label{ color:var(--muted); font-weight:700; margin-bottom:8px }
+.stat-value{ font-size:22px; font-weight:800; color:var(--blue) }
+
+/* CONTACT */
+.contact .contact-links{ margin-top:18px }
+
+/* FOOTER */
+.site-footer{ padding:26px 18px; border-top:1px solid rgba(255,255,255,0.03); margin-top:36px; color:var(--muted) }
+
+/* FADE-IN */
+.fade{ opacity:0; transform: translateY(28px); transition: all 700ms cubic-bezier(.2,.9,.2,1) }
+.fade.visible{ opacity:1; transform: translateY(0) }
+
+/* RESPONSIVE */
+@media (max-width:880px){
+  .header-inner{ padding:12px }
+  .nav a{ margin-left:12px; font-size:14px }
+  .cards{ gap:18px }
+  .card{ width:100%; max-width:420px }
+  .hero-inner{ padding:30px }
+}
 
