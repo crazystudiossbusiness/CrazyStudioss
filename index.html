@@ -229,24 +229,30 @@
   </script>
 
   <script>
-  /* -------------------------
-     Stats placeholders (front-end will call backend /api endpoints)
-     Replace API_ROOT with your deployed API later
-     ------------------------- */
-  (function(){
-    const API_ROOT = ''; // set to your backend URL when ready, e.g. https://crazy-api.example.com
+  /* <script>
+/* -------------------------
+   Stats placeholders (front-end will call backend /api endpoints)
+   Replace API_ROOT with your deployed API later
+   ------------------------- */
+(function(){
+  const API_ROOT = ''; // set to your backend URL when ready, e.g. https://crazy-api.example.com
 
-    // helper to set element text safely
-    function setText(id, txt){ const el = document.getElementById(id); if(el) el.innerText = txt; }
+  // helper to set element text safely
+  function setText(id, txt){ const el = document.getElementById(id); if(el) el.innerText = txt; }
 
-    async function updateStats(){
-      // If you have backend, call endpoints. For now show nice defaults so page looks alive.
-      setText('discord-count', '—');
-      setText('rng-count', '—');
-      setText('msf-count', '—');
-      setText('howtoccucount', '—');
-      setText('brainrotcount', '—');
-      setText('epicsensecount', '—');
+  async function updateStats(){
+    // If you have backend, call endpoints. For now show nice defaults so page looks alive.
+    setText('discord-count', '—');
+    setText('rng-count', '—');
+    setText('msf-count', '—');
+    setText('howtoccucount', '—');
+    setText('brainrotcount', '—');
+    setText('epicsensecount', '—');
+  }
+  updateStats();
+  setInterval(updateStats, 30000);
+})();
+</script>
 
       // Example: if API_ROOT is set, uncomment and adapt:
       /*
