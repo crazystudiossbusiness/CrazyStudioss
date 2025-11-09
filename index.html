@@ -1,78 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crazy Studios</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <img src="assets/CrazyLogo.png" alt="Crazy Studios Logo" class="logo">
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#games">Games</a>
-      <a href="#partners">Partners</a>
-      <a href="#stats">Stats</a>
-    </nav>
+    <h1>Crazy Studios</h1>
   </header>
 
-  <section id="home" class="hero">
-    <div class="overlay">
-      <h1>Welcome to <span>Crazy Studios</span></h1>
-      <p>Building unique Roblox experiences with passion.</p>
-      <a href="#games" class="btn">View Our Games</a>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <img src="CrazyLogo.png" alt="Crazy Studios Logo">
+    <h2>Creating the Next Generation of Roblox Games</h2>
+    <p>We’re a passionate team bringing unique, fun, and high-quality games to Roblox.  
+      Join our community and see what we’re building next!</p>
+
+    <div class="buttons">
+      <a href="https://discord.gg/7JQzFFrcKC" class="btn" target="_blank">Join Discord</a>
+      <a href="https://x.com/CrazyStudiosRbx" class="btn" target="_blank">Follow Twitter</a>
+      <a href="#games" class="btn">View Games</a>
     </div>
   </section>
 
-  <section id="games">
-    <h2>Our Games</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Project RNG</h3>
-        <p>A game of randomness, risk, and reward.</p>
-        <a href="https://www.roblox.com/games/16662374622/Project-RNG" target="_blank">Play Now</a>
-      </div>
-      <div class="card">
-        <h3>My Singing Fish</h3>
-        <p>Create music, explore, and collect singing fish!</p>
-        <a href="https://www.roblox.com/games/117050355640712/My-Singing-Fish" target="_blank">Play Now</a>
-      </div>
+  <!-- STATS SECTION -->
+  <section class="stats">
+    <div class="stat-box">
+      <h3>Discord Members</h3>
+      <p id="discord-count">Loading...</p>
+    </div>
+    <div class="stat-box">
+      <h3>Game Players</h3>
+      <p id="rng-count">Loading...</p>
+    </div>
+    <div class="stat-box">
+      <h3>Group Members</h3>
+      <p id="group-count">Loading...</p>
     </div>
   </section>
 
-  <section id="partners">
-    <h2>Partnered Groups</h2>
-    <div class="cards">
-      <a href="https://www.roblox.com/communities/500138575/HowtoCCU#!/about" target="_blank">HowtoCCU</a>
-      <a href="https://www.roblox.com/communities/207673591/Brainrot-Survivors#!/about" target="_blank">Brainrot Survivors</a>
-      <a href="https://www.roblox.com/communities/33974446/Epic-Sense#!/about" target="_blank">Epic Sense</a>
-    </div>
-  </section>
-
-  <section id="stats">
-    <h2>Studio Stats</h2>
-    <div class="stats-container">
-      <div class="stat-card">
-        <h3>Discord Members</h3>
-        <p>132</p>
-      </div>
-      <div class="stat-card">
-        <h3>Group Members</h3>
-        <p>2,413</p>
-      </div>
-      <div class="stat-card">
-        <h3>Games Released</h3>
-        <p>2</p>
-      </div>
-    </div>
-  </section>
-
+  <!-- FOOTER -->
   <footer>
-    <p>© 2025 Crazy Studios | 
-      <a href="https://discord.gg/7JQzFFrcKC">Discord</a> | 
-      <a href="https://x.com/CrazyStudiosRbx">Twitter</a>
-    </p>
+    <p>© 2025 Crazy Studios. All Rights Reserved.</p>
   </footer>
+
+  <!-- SCRIPT FOR FUTURE STATS -->
+  <script>
+    // These will later connect to your backend API
+    document.getElementById("discord-count").innerText = "Soon...";
+    document.getElementById("rng-count").innerText = "Soon...";
+    document.getElementById("group-count").innerText = "Soon...";
+  </script>
 </body>
 </html>
