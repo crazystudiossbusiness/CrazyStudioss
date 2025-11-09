@@ -1,255 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crazy Studios – Roblox Game Studio</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif; }
-  body { background:#0a0f0a; color:#f0f4f8; scroll-behavior: smooth; overflow-x:hidden; }
-
-  /* Header */
-  header { position: fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:20px 50px; background: rgba(10,15,10,0.85); z-index: 1000; transition: all 0.3s; box-shadow: 0 0 15px rgba(26,188,156,0); }
-  header:hover { box-shadow: 0 0 15px rgba(26,188,156,0.5); }
-  header img { height:60px; transition: transform 0.3s; }
-  header img:hover { transform: scale(1.1); }
-  nav a { color:#f0f4f8; text-decoration:none; margin-left:30px; font-weight:700; transition: all 0.3s; text-shadow: 0 0 0 rgba(26,188,156,0); }
-  nav a:hover { color:#1abc9c; text-shadow: 0 0 10px #1abc9c; }
-
-  /* Hero Section */
-  .hero { height:100vh; display:flex; justify-content:center; align-items:center; text-align:center; position:relative; overflow:hidden; }
-  .hero-content { position:relative; z-index:3; animation: fadeIn 2s ease forwards; }
-  .hero h1 { font-size:64px; margin-bottom:20px; animation: slideDown 1s ease forwards; }
-  .hero p { font-size:24px; margin-bottom:40px; animation: slideUp 1s ease forwards; }
-  .hero button { padding:15px 40px; font-size:18px; font-weight:700; background:#1abc9c; color:#0a0f0a; border:none; border-radius:10px; cursor:pointer; transition: all 0.3s; animation: fadeIn 2s ease forwards; }
-  .hero button:hover { background:#16a085; transform: scale(1.05); box-shadow: 0 0 20px #1abc9c; }
-
-  /* Canvases */
-  #particles, #floating-icons { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; pointer-events:none; }
-
-  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-  @keyframes slideDown { from {opacity:0; transform: translateY(-50px);} to {opacity:1; transform: translateY(0);} }
-  @keyframes slideUp { from {opacity:0; transform: translateY(50px);} to {opacity:1; transform: translateY(0);} }
-
-  /* Sections */
-  section { padding:80px 50px; text-align:center; animation: fadeIn 1.5s ease forwards; }
-  section h2 { font-size:36px; margin-bottom:40px; }
-
-  /* Games Section */
-  .games-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
-  .game-card { background:#102420; width:300px; border-radius:15px; overflow:hidden; box-shadow:0 0 20px rgba(26,188,156,0.5); transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; perspective:1000px; }
-  .game-card img { width:100%; display:block; transition: transform 0.3s; }
-  .game-card h3 { padding:15px; }
-  .game-card:hover { transform: rotateY(8deg) rotateX(5deg) translateY(-10px); box-shadow:0 0 40px rgba(26,188,156,0.7); }
-  .game-card:hover img { transform: scale(1.05); }
-
-  /* Contact Section */
-  #contact a { color:#1abc9c; text-decoration:none; font-weight:700; margin:0 10px; transition: color 0.3s, text-shadow 0.3s; }
-  #contact a:hover { color:#16a085; text-shadow: 0 0 10px #1abc9c; }
-
-  /* Footer */
-  footer { background:#102820; padding:40px 50px; text-align:center; }
-
-  @media(max-width:768px){
-    .hero h1 { font-size:48px; }
-    .hero p { font-size:18px; }
-    nav a { margin-left:15px; font-size:14px; }
-    .games-container { flex-direction:column; align-items:center; }
-    .game-card:hover { transform: none; }
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Crazy Studios — Roblox Games</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-  <img src="CrazyLogo.png" alt="Crazy Studios Logo">
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#games">Games</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<section class="hero" id="home">
-  <canvas id="particles"></canvas>
-  <canvas id="floating-icons"></canvas>
-  <div class="hero-content">
-    <h1>Crazy Studios</h1>
-    <p>Epic Roblox games coming soon!</p>
-    <button onclick="document.getElementById('games').scrollIntoView({behavior:'smooth'});">See Our Games</button>
-  </div>
-</section>
-
-<section id="games">
-  <h2>Our Games</h2>
-  <div class="games-container">
-    <div class="game-card">
-      <img src="coming-soon.png" alt="Coming Soon">
-      <h3>Coming Soon</h3>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <img src="assets/CrazyLogo.png" alt="Crazy Studios logo" class="logo">
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#games">Games</a>
+        <a href="#partners">Partners</a>
+        <a href="#stats">Stats</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-    <div class="game-card">
-      <img src="coming-soon.png" alt="Coming Soon">
-      <h3>Coming Soon</h3>
-    </div>
-    <div class="game-card">
-      <img src="coming-soon.png" alt="Coming Soon">
-      <h3>Coming Soon</h3>
-    </div>
-  </div>
-</section>
+  </header>
 
-<section id="about">
-  <h2>About Crazy Studios</h2>
-  <p>Crazy Studios is a Roblox game development studio creating fun, engaging, and unique experiences for players worldwide.</p>
-</section>
+  <!-- HERO -->
+  <main>
+    <section id="home" class="hero">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-inner">
+        <h1 class="hero-title">Crazy Studios</h1>
+        <p class="hero-sub">Epic Roblox experiences — coming soon.</p>
+        <div class="hero-ctas">
+          <a class="btn primary" href="#games">See Our Games</a>
+          <a class="btn ghost" href="https://discord.gg/7JQzFFrcKC" target="_blank">Join Discord</a>
+        </div>
+      </div>
+    </section>
 
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>
-    <a href="https://discord.gg/7JQzFFrcKC" target="_blank">Discord</a> | 
-    <a href="https://x.com/CrazyStudiosRbx?t=W8nq3CrQ-mkd0NW4jrIwLg&s=09" target="_blank">Twitter</a>
-  </p>
-</section>
+    <!-- GAMES -->
+    <section id="games" class="panel fade">
+      <div class="container">
+        <h2>Our Games</h2>
+        <div class="cards">
+          <article class="card">
+            <img src="assets/coming-soon.png" alt="Project RNG thumbnail">
+            <h3>Project RNG</h3>
+            <p class="card-desc">A world of chance & chaos — keep your luck close.</p>
+            <a class="card-link" href="https://www.roblox.com/games/16662374622/Project-RNG" target="_blank">Open Game</a>
+            <div class="card-stat">Players: <span id="count-project-rng">—</span></div>
+          </article>
 
-<footer>
-  &copy; 2025 Crazy Studios. All rights reserved.
-</footer>
+          <article class="card">
+            <img src="assets/coming-soon.png" alt="My Singing Fish thumbnail">
+            <h3>My Singing Fish</h3>
+            <p class="card-desc">Collect, sing and explore an aquatic adventure.</p>
+            <a class="card-link" href="https://www.roblox.com/games/117050355640712/My-Singing-Fish" target="_blank">Open Game</a>
+            <div class="card-stat">Players: <span id="count-my-singing-fish">—</span></div>
+          </article>
 
-<script>
-// ===== Particle network effect =====
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-let particlesArray;
+          <!-- placeholder card -->
+          <article class="card">
+            <img src="assets/coming-soon.png" alt="Coming Soon">
+            <h3>Coming Soon</h3>
+            <p class="card-desc">We&apos;re building something special — stay tuned.</p>
+            <a class="card-link" href="#contact">Get Notified</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-class Particle {
-  constructor(){
-    this.x = Math.random()*canvas.width;
-    this.y = Math.random()*canvas.height;
-    this.size = Math.random()*3 +1;
-    this.speedX = Math.random()*1-0.5;
-    this.speedY = Math.random()*1-0.5;
+    <!-- PARTNERS -->
+    <section id="partners" class="panel fade alt">
+      <div class="container">
+        <h2>Partnered Communities</h2>
+        <div class="partners">
+          <a class="partner" href="https://www.roblox.com/communities/500138575/HowtoCCU#!/about" target="_blank">HowtoCCU</a>
+          <a class="partner" href="https://www.roblox.com/communities/207673591/Brainrot-Survivors#!/about" target="_blank">Brainrot Survivors</a>
+          <a class="partner" href="https://www.roblox.com/communities/33974446/Epic-Sense#!/about" target="_blank">Epic Sense</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="stats" class="panel fade">
+      <div class="container">
+        <h2>Studio Stats</h2>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-label">Discord Members</div>
+            <div class="stat-value" id="discord-count">Loading...</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Project RNG Players</div>
+            <div class="stat-value" id="rng-count">Loading...</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">My Singing Fish Players</div>
+            <div class="stat-value" id="msf-count">Loading...</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Group: HowtoCCU</div>
+            <div class="stat-value" id="howtoccucount">Loading...</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Group: Brainrot</div>
+            <div class="stat-value" id="brainrotcount">Loading...</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Group: Epic Sense</div>
+            <div class="stat-value" id="epicsensecount">Loading...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="panel fade alt">
+      <div class="container contact">
+        <h2>Contact & Follow</h2>
+        <p>Join our Discord or follow us on X for updates and beta drops.</p>
+        <div class="contact-links">
+          <a class="btn primary" href="https://discord.gg/7JQzFFrcKC" target="_blank">Discord</a>
+          <a class="btn ghost" href="https://x.com/CrazyStudiosRbx" target="_blank">Twitter</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2025 Crazy Studios — Crafted with ❤️</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
+  <script>
+  /* -------------------------
+     Small UI helpers:
+     - fade-in on scroll
+     - smooth header show/hide on scroll
+     ------------------------- */
+  (function(){
+    const fades = document.querySelectorAll('.fade');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, {threshold: 0.15});
+    fades.forEach(f => io.observe(f));
+
+    // header hide on scroll down / show on up
+    let lastY = window.scrollY;
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', ()=>{
+      const y = window.scrollY;
+      if (y > lastY && y > 120) header.classList.add('hidden'); else header.classList.remove('hidden');
+      lastY = y;
+    });
+  })();
+  </script>
+
+  <script>
+  /* -------------------------
+     Hero particle network (lightweight)
+     ------------------------- */
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   }
-  update(){
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if(this.x > canvas.width) this.x = 0;
-    if(this.x < 0) this.x = canvas.width;
-    if(this.y > canvas.height) this.y = 0;
-    if(this.y < 0) this.y = canvas.height;
-  }
-  draw(){
-    ctx.fillStyle = '#1abc9c';
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-    ctx.fill();
-  }
-}
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
 
-function init(){
-  particlesArray = [];
-  for(let i=0;i<120;i++){
-    particlesArray.push(new Particle());
-  }
-}
-function connect(){
-  for(let a=0;a<particlesArray.length;a++){
-    for(let b=a;b<particlesArray.length;b++){
-      let dx = particlesArray[a].x - particlesArray[b].x;
-      let dy = particlesArray[a].y - particlesArray[b].y;
-      let distance = Math.sqrt(dx*dx + dy*dy);
-      if(distance < 120){
-        ctx.strokeStyle = 'rgba(26,188,156,'+(1-distance/120)+')';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-        ctx.stroke();
-      }
+  function createParticles(n=90){
+    particles = [];
+    for(let i=0;i<n;i++){
+      particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        vx: (Math.random()-0.5)*0.5,
+        vy: (Math.random()-0.5)*0.5,
+        r: Math.random()*2+0.6
+      });
     }
   }
-}
+  createParticles();
 
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particlesArray.forEach(p=>{
-    p.update();
-    p.draw();
-  });
-  connect();
-  requestAnimationFrame(animate);
-}
-window.addEventListener('resize',()=>{
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  init();
-});
-init();
-animate();
-
-// ===== Floating icons =====
-const iconCanvas = document.getElementById('floating-icons');
-const iconCtx = iconCanvas.getContext('2d');
-iconCanvas.width = window.innerWidth;
-iconCanvas.height = window.innerHeight;
-
-class Icon {
-  constructor(image){
-    this.image = image;
-    this.x = Math.random()*iconCanvas.width;
-    this.y = Math.random()*iconCanvas.height;
-    this.size = Math.random()*40 + 20;
-    this.speedX = Math.random()*0.5 - 0.25;
-    this.speedY = Math.random()*0.5 - 0.25;
-  }
-  update(){
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if(this.x > iconCanvas.width) this.x = 0;
-    if(this.x < 0) this.x = iconCanvas.width;
-    if(this.y > iconCanvas.height) this.y = 0;
-    if(this.y < 0) this.y = iconCanvas.height;
-  }
-  draw(){
-    iconCtx.drawImage(this.image, this.x, this.y, this.size, this.size);
-  }
-}
-
-const iconImages = ['icon1.png','icon2.png','icon3.png']; // Add your icon images
-let icons = [];
-
-function loadIcons(){
-  icons = [];
-  iconImages.forEach(src=>{
-    const img = new Image();
-    img.src = src;
-    img.onload = ()=>{
-      for(let i=0;i<5;i++){
-        icons.push(new Icon(img));
+  function animateParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    // draw and move
+    for(let i=0;i<particles.length;i++){
+      const p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<0) p.x = canvas.width;
+      if(p.x>canvas.width) p.x=0;
+      if(p.y<0) p.y = canvas.height;
+      if(p.y>canvas.height) p.y = 0;
+      ctx.fillStyle = 'rgba(120,80,255,0.9)'; // purple dot
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+      // connect
+      for(let j=i+1;j<particles.length;j++){
+        const q = particles[j];
+        const dx = p.x-q.x, dy = p.y-q.y;
+        const d = Math.sqrt(dx*dx+dy*dy);
+        if(d<110){
+          const a = 1 - d/110;
+          ctx.strokeStyle = 'rgba(30,144,255,' + (0.12*a) + ')'; // blue lines
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
+        }
       }
     }
-  });
-}
-function animateIcons(){
-  iconCtx.clearRect(0,0,iconCanvas.width,iconCanvas.height);
-  icons.forEach(icon=>{
-    icon.update();
-    icon.draw();
-  });
-  requestAnimationFrame(animateIcons);
-}
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
 
-loadIcons();
-animateIcons();
-window.addEventListener('resize',()=>{
-  iconCanvas.width = window.innerWidth;
-  iconCanvas.height = window.innerHeight;
-});
-</script>
+  // reposition particles behind hero-content by sizing canvas height to hero
+  (function adjustHeroCanvasToHero(){
+    const hero = document.querySelector('.hero');
+    function fit(){
+      canvas.style.height = hero.offsetHeight + 'px';
+    }
+    window.addEventListener('resize', fit);
+    fit();
+  })();
+  </script>
 
+  <script>
+  /* -------------------------
+     Stats placeholders (front-end will call backend /api endpoints)
+     Replace API_ROOT with your deployed API later
+     ------------------------- */
+  (function(){
+    const API_ROOT = ''; // set to your backend URL when ready, e.g. https://crazy-api.example.com
+
+    // helper to set element text safely
+    function setText(id, txt){ const el = document.getElementById(id); if(el) el.innerText = txt; }
+
+    async function updateStats(){
+      // If you have backend, call endpoints. For now show nice defaults so page looks alive.
+      setText('discord-count', '—');
+      setText('rng-count', '—');
+      setText('msf-count', '—');
+      setText('howtoccucount', '—');
+      setText('brainrotcount', '—');
+      setText('epicsensecount', '—');
+
+      // Example: if API_ROOT is set, uncomment and adapt:
+      /*
+      try{
+        const d = await fetch(API_ROOT + '/discord-count?guildId=1384190386141921420').then(r=>r.json());
+        setText('discord-count', d.members ?? 'N/A');
+      }catch(e){ setText('discord-count', 'N/A'); }
+      */
+    }
+    updateStats();
+    setInterval(updateStats, 30000);
+  })();
+  </script>
 </body>
 </html>
-
