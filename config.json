@@ -1,9 +1,0 @@
-{
-  "supportRoleName": "Server Staff",
-  "commissionRoleName": "Commission Team",
-  "staffRoleName": "Staff",
-  "ticketCategoryName": "Ticket",
-  "commissionCategoryName": "Commissions",
-  "ticketChannelPrefix": "ticket-",
-  "commissionChannelPrefix": "commission-"
-}
