@@ -4,28 +4,27 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   background-color: #0a0a0a;
-  color: #fff;
-  scroll-behavior: smooth;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
 }
 
-/* HEADER */
 header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 60px;
+  padding: 15px 50px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
   z-index: 1000;
-  border-bottom: 1px solid #3a0ca3;
+  border-bottom: 1px solid #00aaff;
 }
 
 .logo {
@@ -33,172 +32,131 @@ header {
 }
 
 nav a {
-  color: #d1aaff;
-  margin-left: 25px;
+  color: #00aaff;
+  margin: 0 15px;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s;
+  transition: 0.3s;
 }
 
 nav a:hover {
-  color: #00ff99;
+  color: #66ccff;
 }
 
-/* HERO */
 .hero {
   background: url('assets/Gamesbackground.png') center/cover no-repeat;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
-.hero-content {
+.overlay {
   background: rgba(0, 0, 0, 0.6);
-  padding: 40px;
+  padding: 60px;
   border-radius: 20px;
 }
 
 .hero h1 {
-  font-size: 3.5em;
-  color: #d1aaff;
+  font-size: 3em;
+  color: #00aaff;
 }
 
 .hero span {
-  color: #00ff99;
+  color: #66ccff;
 }
 
 .hero p {
   margin-top: 15px;
-  color: #ccc;
   font-size: 1.2em;
 }
 
 .btn {
   display: inline-block;
   margin-top: 25px;
-  padding: 12px 30px;
-  background: linear-gradient(90deg, #00ff99, #d1aaff);
-  color: #000;
-  border-radius: 8px;
+  background: #00aaff;
+  color: black;
+  padding: 10px 25px;
+  border-radius: 10px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   transition: 0.3s;
 }
 
 .btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px #00ff99;
+  background: #66ccff;
+  transform: scale(1.05);
 }
 
-/* SECTIONS */
 section {
-  padding: 100px 20px;
-  text-align: center;
+  padding: 80px 20px;
 }
 
 h2 {
-  font-size: 2.5em;
-  color: #00ff99;
+  font-size: 2.2em;
+  color: #00aaff;
   margin-bottom: 40px;
 }
 
-/* CARDS */
-.card-container {
+.cards {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
 }
 
 .card {
-  background: #121212;
-  border: 2px solid #3a0ca3;
+  background: #111;
+  border: 2px solid #00aaff;
   border-radius: 20px;
-  padding: 25px;
-  width: 280px;
+  padding: 30px;
+  width: 250px;
   transition: 0.3s;
 }
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px #00ff99;
+  box-shadow: 0 0 20px #00aaff;
 }
 
 .card a {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: #00ff99;
-  color: #000;
+  display: block;
+  margin-top: 10px;
+  background: #00aaff;
+  color: black;
+  padding: 8px 16px;
   border-radius: 8px;
-  font-weight: 600;
   text-decoration: none;
+  font-weight: bold;
 }
 
-/* PARTNERS */
-.partner {
-  background: #121212;
-  padding: 20px;
-  border: 2px solid #d1aaff;
-  border-radius: 15px;
-  text-decoration: none;
-  color: #fff;
-  transition: 0.3s;
-}
-
-.partner:hover {
-  background: #3a0ca3;
-  transform: scale(1.05);
-}
-
-/* STATS */
-.stats {
+.stats-container {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 
-.stat {
+.stat-card {
   background: #111;
-  border: 2px solid #00ff99;
-  border-radius: 20px;
-  width: 200px;
+  border: 2px solid #00aaff;
   padding: 30px;
-  box-shadow: 0 0 10px #00ff99;
+  width: 200px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #00aaff;
 }
 
-.stat h3 {
-  color: #d1aaff;
-  margin-bottom: 10px;
-}
-
-/* FOOTER */
 footer {
-  background: #050505;
-  padding: 25px;
-  border-top: 1px solid #3a0ca3;
+  background: black;
+  padding: 20px;
+  font-size: 14px;
 }
 
 footer a {
-  color: #d1aaff;
+  color: #00aaff;
   text-decoration: none;
 }
 
 footer a:hover {
-  color: #00ff99;
-}
-
-/* ANIMATIONS */
-.fade-section {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease;
-}
-
-.fade-section.visible {
-  opacity: 1;
-  transform: translateY(0);
+  color: #66ccff;
 }
