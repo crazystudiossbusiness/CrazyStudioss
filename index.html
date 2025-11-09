@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <img src="assets/CrazyLogo.png" alt="Crazy Studios Logo" class="logo" />
+    <img src="assets/CrazyLogo.png" alt="Crazy Studios Logo" class="logo">
     <nav>
       <a href="#home">Home</a>
       <a href="#games">Games</a>
@@ -18,50 +18,50 @@
   </header>
 
   <section id="home" class="hero">
-    <div class="hero-content">
+    <div class="overlay">
       <h1>Welcome to <span>Crazy Studios</span></h1>
-      <p>Innovating Roblox, one game at a time.</p>
-      <a href="#games" class="btn">Explore Games</a>
+      <p>Building unique Roblox experiences with passion.</p>
+      <a href="#games" class="btn">View Our Games</a>
     </div>
   </section>
 
-  <section id="games" class="fade-section">
+  <section id="games">
     <h2>Our Games</h2>
-    <div class="card-container">
+    <div class="cards">
       <div class="card">
         <h3>Project RNG</h3>
-        <p>A mysterious world full of luck and chaos.</p>
+        <p>A game of randomness, risk, and reward.</p>
         <a href="https://www.roblox.com/games/16662374622/Project-RNG" target="_blank">Play Now</a>
       </div>
       <div class="card">
         <h3>My Singing Fish</h3>
-        <p>Sing, build, and vibe in a fun aquatic world.</p>
+        <p>Create music, explore, and collect singing fish!</p>
         <a href="https://www.roblox.com/games/117050355640712/My-Singing-Fish" target="_blank">Play Now</a>
       </div>
     </div>
   </section>
 
-  <section id="partners" class="fade-section">
+  <section id="partners">
     <h2>Partnered Groups</h2>
-    <div class="card-container">
-      <a href="https://www.roblox.com/communities/500138575/HowtoCCU#!/about" class="partner">HowtoCCU</a>
-      <a href="https://www.roblox.com/communities/207673591/Brainrot-Survivors#!/about" class="partner">Brainrot Survivors</a>
-      <a href="https://www.roblox.com/communities/33974446/Epic-Sense#!/about" class="partner">Epic Sense</a>
+    <div class="cards">
+      <a href="https://www.roblox.com/communities/500138575/HowtoCCU#!/about" target="_blank">HowtoCCU</a>
+      <a href="https://www.roblox.com/communities/207673591/Brainrot-Survivors#!/about" target="_blank">Brainrot Survivors</a>
+      <a href="https://www.roblox.com/communities/33974446/Epic-Sense#!/about" target="_blank">Epic Sense</a>
     </div>
   </section>
 
-  <section id="stats" class="fade-section">
+  <section id="stats">
     <h2>Studio Stats</h2>
-    <div class="stats">
-      <div class="stat">
+    <div class="stats-container">
+      <div class="stat-card">
         <h3>Discord Members</h3>
         <p>132</p>
       </div>
-      <div class="stat">
+      <div class="stat-card">
         <h3>Group Members</h3>
         <p>2,413</p>
       </div>
-      <div class="stat">
+      <div class="stat-card">
         <h3>Games Released</h3>
         <p>2</p>
       </div>
@@ -69,25 +69,10 @@
   </section>
 
   <footer>
-    <p>© 2025 Crazy Studios</p>
-    <p>
-      <a href="https://discord.gg/7JQzFFrcKC" target="_blank">Discord</a> |
-      <a href="https://x.com/CrazyStudiosRbx" target="_blank">Twitter</a>
+    <p>© 2025 Crazy Studios | 
+      <a href="https://discord.gg/7JQzFFrcKC">Discord</a> | 
+      <a href="https://x.com/CrazyStudiosRbx">Twitter</a>
     </p>
   </footer>
-
-  <script>
-    const sections = document.querySelectorAll('.fade-section');
-    const reveal = () => {
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          sec.classList.add('visible');
-        }
-      });
-    };
-    window.addEventListener('scroll', reveal);
-    reveal();
-  </script>
 </body>
 </html>
