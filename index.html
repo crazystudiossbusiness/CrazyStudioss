@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif; }
-  body { background:#0a0f0a; color:#f0f4f8; scroll-behavior: smooth; }
+  body { background:#0a0f0a; color:#f0f4f8; scroll-behavior: smooth; overflow-x:hidden; }
 
   /* Header */
   header { position: fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:20px 50px; background: rgba(10,15,10,0.85); z-index: 1000; transition: all 0.3s; box-shadow: 0 0 15px rgba(26,188,156,0); }
@@ -18,23 +18,19 @@
   nav a:hover { color:#1abc9c; text-shadow: 0 0 10px #1abc9c; }
 
   /* Hero Section */
-  .hero { height:100vh; display:flex; justify-content:center; align-items:center; text-align:center; background-size:cover; background-position:center; position:relative; animation: slideBackground 20s linear infinite; }
-  .hero::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(10,15,10,0.6); }
-  .hero-content { position:relative; z-index:1; animation: fadeIn 2s ease forwards; }
+  .hero { height:100vh; display:flex; justify-content:center; align-items:center; text-align:center; position:relative; overflow:hidden; }
+  .hero-content { position:relative; z-index:2; animation: fadeIn 2s ease forwards; }
   .hero h1 { font-size:64px; margin-bottom:20px; animation: slideDown 1s ease forwards; }
   .hero p { font-size:24px; margin-bottom:40px; animation: slideUp 1s ease forwards; }
   .hero button { padding:15px 40px; font-size:18px; font-weight:700; background:#1abc9c; color:#0a0f0a; border:none; border-radius:10px; cursor:pointer; transition: all 0.3s; animation: fadeIn 2s ease forwards; }
   .hero button:hover { background:#16a085; transform: scale(1.05); box-shadow: 0 0 20px #1abc9c; }
 
+  /* Particles canvas */
+  #particles { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; }
+
   @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
   @keyframes slideDown { from {opacity:0; transform: translateY(-50px);} to {opacity:1; transform: translateY(0);} }
   @keyframes slideUp { from {opacity:0; transform: translateY(50px);} to {opacity:1; transform: translateY(0);} }
-
-  @keyframes slideBackground { 
-    0% { background-position: center top; } 
-    50% { background-position: center center; } 
-    100% { background-position: center top; } 
-  }
 
   /* Sections */
   section { padding:80px 50px; text-align:center; animation: fadeIn 1.5s ease forwards; }
@@ -77,6 +73,7 @@
 </header>
 
 <section class="hero" id="home">
+  <canvas id="particles"></canvas>
   <div class="hero-content">
     <h1>Crazy Studios</h1>
     <p>Epic Roblox games coming soon!</p>
@@ -118,6 +115,65 @@
 <footer>
   &copy; 2025 Crazy Studios. All rights reserved.
 </footer>
+
+<script>
+  // Particle effect
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particlesArray;
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    init();
+  });
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 3 + 1;
+      this.speedX = Math.random() * 1 - 0.5;
+      this.speedY = Math.random() * 1 - 0.5;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x > canvas.width) this.x = 0;
+      if (this.x < 0) this.x = canvas.width;
+      if (this.y > canvas.height) this.y = 0;
+      if (this.y < 0) this.y = canvas.height;
+    }
+    draw() {
+      ctx.fillStyle = '#1abc9c';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+      ctx.fill();
+    }
+  }
+
+  function init() {
+    particlesArray = [];
+    for (let i = 0; i < 100; i++) {
+      particlesArray.push(new Particle());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  init();
+  animate();
+</script>
 
 </body>
 </html>
